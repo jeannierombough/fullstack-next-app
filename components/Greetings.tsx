@@ -25,7 +25,6 @@ const Greetings = async () => {
         </h4>
       </div>
       <div>
-        // eslint-disable-next-line react/no-unescaped-entities
         <Button size="large">Today's Schedule</Button>
       </div>
     </Card>

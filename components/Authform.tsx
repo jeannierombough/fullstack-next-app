@@ -1,49 +1,49 @@
 'use client';
 
-import { register, signin } from "@/lib/api";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
-import Button from "./Button";
-import Card from "./Card";
-import Input from "./Input";
+import { register, signin } from '@/lib/api';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useCallback, useState } from 'react';
+import Button from './Button';
+import Card from './Card';
+import Input from './Input';
 
 const registerContent = {
   linkUrl: '/signin',
-  linkText: "Already have an account?",
+  linkText: 'Already have an account?',
   header: 'Create a new account',
   subheader: 'Just a few things to get started',
-  buttonText: 'Register'
-}
+  buttonText: 'Register',
+};
 
 const signinContent = {
   linkUrl: '/register',
   linkText: "Don't have an account?",
   header: 'Welcome back!',
   subheader: 'Enter your credentials to access your account',
-  buttonText: 'Sign In'
-}
+  buttonText: 'Sign In',
+};
 
-const initial = {email: '', password: '', firstName: '', lastName: ''}
+const initial = { email: '', password: '', firstName: '', lastName: '' };
 
-const AuthForm = ({mode}) => {
-  const [formState, setFormState] = useState({...initial})
-  const router = useRouter()
+const AuthForm = ({ mode }) => {
+  const [formState, setFormState] = useState({ ...initial });
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (mode === 'register') {
-      await register(formState)
+      await register(formState);
     } else {
-      await signin(formState)
+      await signin(formState);
     }
 
-    setFormState(initial)
-    router.replace('/home')
-  }
+    setFormState(initial);
+    router.replace('/home');
+  };
 
-  const content = mode === 'register' ? registerContent : signinContent
+  const content = mode === 'register' ? registerContent : signinContent;
 
   return (
     <Card>
@@ -53,7 +53,7 @@ const AuthForm = ({mode}) => {
           <p className="tex-lg text-black/25">{content.subheader}</p>
         </div>
         <form onSubmit={handleSubmit} className="py-10 w-full">
-          {mode === "register" && (
+          {mode === 'register' && (
             <div className="flex mb-8 justify-between">
               <div className="pr-2">
                 <div className="text-lg mb-4 ml-2 text-black/50">
@@ -129,10 +129,7 @@ const AuthForm = ({mode}) => {
         </form>
       </div>
     </Card>
-  )
-}
-
+  );
+};
 
 export default AuthForm;
-
-
