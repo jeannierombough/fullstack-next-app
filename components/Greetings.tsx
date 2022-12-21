@@ -1,18 +1,19 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
-import { getUserFromCookie } from '@/lib/auth';
-import { cookies } from 'next/headers';
-import Button from './Button';
-import Card from './Card';
-import { delay } from '@/lib/async';
+import { getUserFromCookie } from '@/lib/auth'
+import { cookies } from 'next/headers'
+import Button from './Button'
+import Card from './Card'
+import img from '@/assets/images/marketing-manager.png'
+import Image from 'next/image'
+import { delay } from '@/lib/async'
 
 const getData = async () => {
-  await delay(5000);
-  const user = await getUserFromCookie(cookies());
-  return user;
-};
+  await delay(5000)
+  const user = await getUserFromCookie(cookies())
+  return user
+}
 
 const Greetings = async () => {
-  const user = await getData();
+  const user = await getData()
 
   return (
     <Card className="w-full py-4 relative">
@@ -27,8 +28,14 @@ const Greetings = async () => {
       <div>
         <Button size="large">Today's Schedule</Button>
       </div>
-    </Card>
-  );
-};
 
-export default Greetings;
+      <Image
+        src={img}
+        alt="busy person on computer"
+        className="w-1/3 absolute top-[-50px] right-0"
+      />
+    </Card>
+  )
+}
+
+export default Greetings

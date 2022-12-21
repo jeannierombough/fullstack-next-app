@@ -10,7 +10,11 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)'],
       },
+      colors: {
+        midnight: 'rgb(18,18,18)',
+        night: 'rgb(30,30,30)',
+      },
     },
   },
   plugins: [],
-};
+}

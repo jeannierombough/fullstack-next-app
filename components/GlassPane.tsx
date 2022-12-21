@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx from 'clsx'
 
 const GlassPane = ({ children, className }) => {
   return (
@@ -10,7 +10,7 @@ const GlassPane = ({ children, className }) => {
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default GlassPane;
+export default GlassPane

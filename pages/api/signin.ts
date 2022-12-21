@@ -1,7 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '@/lib/db';
-import { comparePasswords, createJWT } from '@/lib/auth';
-import { serialize } from 'cookie';
+import { NextApiRequest, NextApiResponse } from 'next'
+import { db } from '@/lib/db'
+import { comparePasswords, createJWT } from '@/lib/auth'
+import { serialize } from 'cookie'
 
 export default async function signin(
   req: NextApiRequest,
@@ -12,18 +12,18 @@ export default async function signin(
       where: {
         email: req.body.email,
       },
-    });
+    })
 
     if (!user) {
-      res.status(401);
-      res.json({ error: 'Invalid login' });
-      return;
+      res.status(401)
+      res.json({ error: 'Invalid login' })
+      return
     }
 
-    const isUser = await comparePasswords(req.body.password, user.password);
+    const isUser = await comparePasswords(req.body.password, user.password)
 
     if (isUser) {
-      const jwt = await createJWT(user);
+      const jwt = await createJWT(user)
       res.setHeader(
         'Set-Cookie',
         serialize(process.env.COOKIE_NAME, jwt, {
@@ -31,15 +31,15 @@ export default async function signin(
           path: '/',
           maxAge: 60 * 60 * 24 * 7,
         })
-      );
-      res.status(201);
-      res.end();
+      )
+      res.status(201)
+      res.end()
     } else {
-      res.status(401);
-      res.json({ error: 'Invalid login' });
+      res.status(401)
+      res.json({ error: 'Invalid login' })
     }
   } else {
-    res.status(402);
-    res.end();
+    res.status(402)
+    res.end()
   }
 }
