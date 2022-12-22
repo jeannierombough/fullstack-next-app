@@ -14,7 +14,7 @@ COOKIE_NAME=""
 You'll need to migrate your DB using prisma
 `npx prisma migrate dev`
 
-Now install deps and start the server.
+Now install dependencies and start the server.
 
 ```bash
 npm run dev
